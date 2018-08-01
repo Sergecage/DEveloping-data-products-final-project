@@ -12,6 +12,7 @@ library(ggplot2)
 
 shinyServer(function(input, output) {
   
+  #Use mtcars dataset 
   dataset <- reactive( {
     mtcars[sample(nrow(mtcars), input$sampleSize),]
   })
@@ -27,8 +28,6 @@ shinyServer(function(input, output) {
     if (facets != '. ~ .')
       p <- p + facet_grid(facets)
     
-    # if (input$jitter)
-    #      p <- p + geom_jitter()
     if (input$smooth)
       p <- p + geom_smooth()
     
